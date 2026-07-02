@@ -1,23 +1,29 @@
-document
-.getElementById("fullscreenButton")
-.addEventListener("click",()=>{
+const gpsButton = document.getElementById("gpsButton");
 
-if(!document.fullscreenElement){
+if (gpsButton) {
+    gpsButton.addEventListener("click", () => {
 
-document.documentElement.requestFullscreen();
+        if (!navigator.geolocation) {
+            alert("Din browser understøtter ikke GPS.");
+            return;
+        }
 
-}else{
+        navigator.geolocation.getCurrentPosition(
+            (position) => {
 
-document.exitFullscreen();
+                const lat = position.coords.latitude;
+                const lon = position.coords.longitude;
 
+                window.open(
+                    `https://www.google.com/maps?q=${lat},${lon}`,
+                    "_blank"
+                );
+
+            },
+            () => {
+                alert("Kunne ikke hente din position.");
+            }
+        );
+
+    });
 }
-
-});
-
-document
-.getElementById("gpsButton")
-.addEventListener("click",()=>{
-
-alert("GPS-funktion kommer i version 2.1");
-
-});
