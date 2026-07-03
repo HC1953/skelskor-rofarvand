@@ -1,7 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const gpsButton = document.getElementById("gpsButton");
-
-    gpsButton.addEventListener("click", () => {
-        alert("GPS-knappen virker!");
+    document.getElementById("gpsButton").addEventListener("click", () => {
+        alert("Knappen virker!");
     });
 });
