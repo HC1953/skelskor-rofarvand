@@ -1,28 +1,38 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const gpsButton = document.getElementById("gpsButton");
 
-    gpsButton.addEventListener("click", () => {
+    document.getElementById("mapsButton").onclick = () => {
+
+        window.open(
+            "https://www.google.com/maps/d/viewer?mid=1gDs8klI6_od136Da73EF5AhGZRY3sfk",
+            "_blank"
+        );
+
+    };
+
+    document.getElementById("gpsButton").onclick = () => {
 
         if (!navigator.geolocation) {
-            alert("Denne browser understøtter ikke GPS.");
+            alert("GPS understøttes ikke.");
             return;
         }
 
         navigator.geolocation.getCurrentPosition(
-            function(position) {
-                alert(
-                    "Breddegrad: " + position.coords.latitude +
-                    "\nLængdegrad: " + position.coords.longitude
+            (pos) => {
+
+                window.open(
+                    `https://www.google.com/maps?q=${pos.coords.latitude},${pos.coords.longitude}`,
+                    "_blank"
                 );
+
             },
-            function(error) {
-                alert("GPS-fejl: " + error.message);
+            (err) => {
+                alert(err.message);
             },
             {
-                enableHighAccuracy: true,
-                timeout: 10000,
-                maximumAge: 0
+                enableHighAccuracy:true
             }
         );
-    });
+
+    };
+
 });
