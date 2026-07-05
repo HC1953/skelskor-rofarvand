@@ -6,8 +6,9 @@
 
 html,body{
     height:100%;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+    background:#fff;
     overflow:hidden;
-    font-family:Arial,Helvetica,sans-serif;
 }
 
 body{
@@ -15,32 +16,39 @@ body{
     flex-direction:column;
 }
 
+/* Topbjælke */
+
 header{
-    height:60px;
-    background:#083b63;
+    height:56px;
+    background:#003B6F;
     color:white;
 
     display:flex;
     align-items:center;
 
-    padding:8px 14px;
+    padding:0 12px;
 
-    flex-shrink:0;
+    box-shadow:0 2px 6px rgba(0,0,0,.2);
+
+    z-index:1000;
 }
 
 header img{
-    height:42px;
+    height:34px;
     width:auto;
-    margin-right:12px;
+    margin-right:10px;
 }
 
 header h1{
-    font-size:20px;
+    font-size:18px;
     font-weight:600;
 }
 
+/* Kort */
+
 main{
     flex:1;
+    position:relative;
 }
 
 iframe{
@@ -48,28 +56,38 @@ iframe{
     height:100%;
     border:none;
 }
-#gpsButton{
-    position:fixed;
-    right:20px;
-    bottom:20px;
 
-    width:56px;
-    height:56px;
+/* Flydende knapper */
+
+.fab{
+    position:absolute;
+    right:15px;
+
+    width:54px;
+    height:54px;
 
     border:none;
     border-radius:50%;
 
-    background:#ffffff;
+    background:white;
 
-    font-size:28px;
+    font-size:24px;
 
     cursor:pointer;
 
-    box-shadow:0 4px 10px rgba(0,0,0,.3);
+    box-shadow:0 4px 10px rgba(0,0,0,.25);
 
-    z-index:1000;
+    z-index:9999;
 }
 
-#gpsButton:hover{
+#gpsButton{
+    bottom:20px;
+}
+
+#mapsButton{
+    bottom:85px;
+}
+
+.fab:hover{
     transform:scale(1.05);
 }
